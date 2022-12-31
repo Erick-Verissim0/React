@@ -1,13 +1,21 @@
 import React from 'react';
-import Footer from './Footer';
-import Header from './Header';
+
+const Title = ({ cor, text, children }) => {
+  return (
+    <h1 style={{ color: cor }}>
+      {text}, {children}
+    </h1>
+  );
+};
 
 const App = () => {
   return (
     <div>
-      <h1>App</h1>
-      <Header />
-      <Footer />
+      <Title cor="red" text="Meu titulo 1">
+        Isso é o children
+        <p>Teste</p>
+      </Title>
+      <Title cor="blue" text="Meu titulo 2" />
     </div>
   );
 };
