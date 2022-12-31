@@ -1,23 +1,14 @@
 import React from 'react';
-
-const Title = ({ cor, text, children }) => {
-  return (
-    <h1 style={{ color: cor }}>
-      {text}, {children}
-    </h1>
-  );
-};
+import Form from './Form/Form';
 
 const App = () => {
   return (
     <div>
-      <Title cor="red" text="Meu titulo 1">
-        Isso é o children
-        <p>Teste</p>
-      </Title>
-      <Title cor="blue" text="Meu titulo 2" />
+      <Form />
     </div>
   );
 };
+
+// Usamos rest e spread quando não sabemos todas as propriedades que um componente pode receber
 
 export default App;
