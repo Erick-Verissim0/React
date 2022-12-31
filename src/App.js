@@ -1,14 +1,24 @@
 import React from 'react';
-import Form from './Form/Form';
+import Header from './Header';
+import Home from './Home';
+import Products from './Products';
 
 const App = () => {
+  let Page = Home;
+
+  const { pathname } = window.location;
+  if (pathname === '/products') {
+    Page = Products;
+  } else {
+    Page = Home;
+  }
+
   return (
     <div>
-      <Form />
+      <Page />
+      <Header />
     </div>
   );
 };
-
-// Usamos rest e spread quando não sabemos todas as propriedades que um componente pode receber
 
 export default App;

@@ -1,7 +1,18 @@
 import React from 'react';
 
 const Header = () => {
-  return <h1>Header</h1>;
+  return (
+    <header>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/products">Products</a>
+        </li>
+      </ul>
+    </header>
+  );
 };
-export default Header;
 
+export default Header;
