@@ -1,22 +1,21 @@
 import React from 'react';
-import Header from './Header';
-import Home from './Home';
-import Products from './Products';
 
 const App = () => {
-  let Page = Home;
+  const [active, setActive] = React.useState(false); // por padrão é usado o "set na frente e depois o nome do paramêtro"
 
-  const { pathname } = window.location;
-  if (pathname === '/products') {
-    Page = Products;
-  } else {
-    Page = Home;
+  const [data, setData] = React.useState({ name: 'Erick', age: '18' });
+
+  function handClick() {
+    setActive(!active);
+    setData({ ...data, faculty: 'Cesmac' });
   }
 
   return (
     <div>
-      <Page />
-      <Header />
+      <p> {data.name} </p>
+      <p> {data.age} </p>
+      <p> {data.faculty} </p>
+      <button onClick={handClick}> {active ? 'Active' : 'Disabled'} </button>;
     </div>
   );
 };
