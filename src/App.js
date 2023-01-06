@@ -1,14 +1,20 @@
 import React from 'react';
-import Button from './Button';
-import Modal from './Modal';
 
 const App = () => {
-  const [modal, setModal] = React.useState(false);
+  const [count, setCount] = React.useState(1);
+  const [items, setItems] = React.useState(['Item 1']);
+
+  function handleClick() {
+    setCount((count) => count + 1); // poderia fazer como está na linha abaixo
+    setItems([...items, 'Item' + (count + 1)]); // não estou passando a const como parametro do uma arrow function porque ja estou usando a própria constante dentro
+  }
 
   return (
     <div>
-      <Modal modal={modal} setModal={setModal} />
-      <Button setModal={setModal} />
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+      <button onClick={handleClick}>Click</button>
     </div>
   );
 };
