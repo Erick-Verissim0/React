@@ -1,24 +1,14 @@
 import React from 'react';
-
-function handleClick() {
-  let c;
-  for (let i = 0; i < 10000000000; i++) {
-    c = i + i / 10;
-  }
-  return c;
-}
+import { GlobalStorage } from './GlobalContext';
+import Product from './Product';
 
 const App = () => {
-  const [count, setCount] = React.useState(0);
-
-  const t1 = performance.now(); // estou querendo a performance da const, em tempo de resposta
-  const value = React.useMemo(() => handleClick(), []);
-  console.log(performance.now() - t1);
-  console.log(value);
   return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Click {count}</button>
-    </div>
+    <GlobalStorage>
+      <Product />
+      <div> </div>
+    </GlobalStorage> // GlobalStorage é a constante que contem várias funções dentro. Lembrando, tem que passar ela como uma tag HTML, exemplo: <name> </name>
   );
 };
+
 export default App;
