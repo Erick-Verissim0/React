@@ -1,32 +1,24 @@
 import React from 'react';
 
-const App = () => {
-  const [coments, setComents] = React.useState([]);
-  const [input, setInput] = React.useState('');
-  const inputElement = React.useRef();
-
-  function handleClick() {
-    setComents([...coments, input]);
-    setInput('');
-    inputElement.current.focus();
+function handleClick() {
+  let c;
+  for (let i = 0; i < 10000000000; i++) {
+    c = i + i / 10;
   }
+  return c;
+}
 
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  const t1 = performance.now(); // estou querendo a performance da const, em tempo de resposta
+  const value = React.useMemo(() => handleClick(), []);
+  console.log(performance.now() - t1);
+  console.log(value);
   return (
     <div>
-      <ul>
-        {coments.map((coments) => (
-          <li key={coments}>{coments}</li>
-        ))}
-      </ul>
-      <input
-        type="text"
-        ref={inputElement}
-        value={input}
-        onChange={({ target }) => setInput(target.value)}
-      />
-      <button onClick={handleClick}>Send</button>
+      <button onClick={() => setCount(count + 1)}>Click {count}</button>
     </div>
   );
 };
-
 export default App;
