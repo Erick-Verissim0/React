@@ -1,13 +1,19 @@
 import React from 'react';
-import { GlobalStorage } from './GlobalContext';
-import Product from './Product';
+import useLocalStorage from './useLocalStorage';
 
 const App = () => {
+  const [product, setProduct] = useLocalStorage('Produto:', '');
+
+  function handleClick({ target }) {
+    setProduct(target.innerText);
+  }
+
   return (
-    <GlobalStorage>
-      <Product />
-      <div> </div>
-    </GlobalStorage> // GlobalStorage é a constante que contem várias funções dentro. Lembrando, tem que passar ela como uma tag HTML, exemplo: <name> </name>
+    <div>
+      <p> Produto escolhido: {product} </p>
+      <button onClick={handleClick}> Notebook </button>
+      <button onClick={handleClick}> Smartphone </button>
+    </div>
   );
 };
 
