@@ -1,20 +1,19 @@
 import React from 'react';
-import useLocalStorage from './useLocalStorage';
 
-const App = () => {
-  const [product, setProduct] = useLocalStorage('Produto:', '');
-
-  function handleClick({ target }) {
-    setProduct(target.innerText);
-  }
+function App() {
+  const [name, setName] = React.useState('');
 
   return (
-    <div>
-      <p> Produto escolhido: {product} </p>
-      <button onClick={handleClick}> Notebook </button>
-      <button onClick={handleClick}> Smartphone </button>
-    </div>
+    <form>
+      <label htmlFor="idName">Nome:</label>
+      <input
+        id="idName"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+      ></input>
+      <h2>{name}</h2>
+    </form>
   );
-};
+}
 
 export default App;
