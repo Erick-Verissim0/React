@@ -1,19 +1,43 @@
 import React from 'react';
 
-function App() {
-  const [name, setName] = React.useState('');
+const App = () => {
+  const [form, setForm] = React.useState({
+    name: '',
+    email: '',
+  });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  function handleChange({ target }) {
+    const { id, value } = target;
+    console.log(id, value);
+    setForm({ ...form, [id]: value });
+  }
 
   return (
-    <form>
-      <label htmlFor="idName">Nome:</label>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name">Nome:</label>
       <input
-        id="idName"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
+        id="name"
+        type="text"
+        value={form.name}
+        onChange={handleChange}
       ></input>
-      <h2>{name}</h2>
+      {form.name}
+
+      <label htmlFor="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        value={setForm.email}
+        onChange={handleChange}
+      ></input>
+      {form.email}
+      <button>Click</button>
     </form>
   );
-}
+};
 
 export default App;
