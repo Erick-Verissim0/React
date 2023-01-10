@@ -1,17 +1,23 @@
 import React from 'react';
 
 function App() {
-  const [textarea, setTextarea] = React.useState('');
+  const [select, setSelect] = React.useState('');
 
   return (
-    <form>
-      <input
-        value={textarea}
-        rows="5" // estou me referindo ao tamanho do textarea baseado em linhas
-        onChange={({ target }) => setTextarea(target.value)}
-      />
-      {textarea}
-    </form>
+    <div>
+      <form>
+        <select
+          value={select}
+          onChange={({ target }) => setSelect(target.value)}
+        >
+          <option disabled value=""></option>
+          <option value="Notebook">Notebook</option>
+          <option value="Smartphone">Smartphone</option>
+          <option value="Tablet">Tablet</option>
+        </select>
+        {select}
+      </form>
+    </div>
   );
 }
 
