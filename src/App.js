@@ -1,43 +1,18 @@
 import React from 'react';
 
-const App = () => {
-  const [form, setForm] = React.useState({
-    name: '',
-    email: '',
-  });
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  function handleChange({ target }) {
-    const { id, value } = target;
-    console.log(id, value);
-    setForm({ ...form, [id]: value });
-  }
+function App() {
+  const [textarea, setTextarea] = React.useState('');
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Nome:</label>
+    <form>
       <input
-        id="name"
-        type="text"
-        value={form.name}
-        onChange={handleChange}
-      ></input>
-      {form.name}
-
-      <label htmlFor="email">Email:</label>
-      <input
-        id="email"
-        type="email"
-        value={setForm.email}
-        onChange={handleChange}
-      ></input>
-      {form.email}
-      <button>Click</button>
+        value={textarea}
+        rows="5" // estou me referindo ao tamanho do textarea baseado em linhas
+        onChange={({ target }) => setTextarea(target.value)}
+      />
+      {textarea}
     </form>
   );
-};
+}
 
 export default App;
