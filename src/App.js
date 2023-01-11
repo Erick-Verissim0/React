@@ -1,49 +1,32 @@
 import React from 'react';
 
 function App() {
-  const [radio, setRadio] = React.useState('');
-  const [color, setColor] = React.useState('');
+  const [color, setColor] = React.useState([]);
 
   function handleChange({ target }) {
-    setRadio(target.value);
+    if (target.checked) {
+      setColor([...color, target.value]);
+    } else {
+      setColor(color.filter((color) => color !== target.value));
+    }
   }
 
   return (
     <form>
-      <h2> Products </h2>
       <label>
         <input
-          type="radio"
+          type="checkbox"
           onChange={handleChange}
-          checked={radio === 'Smartphone'}
-          value="Smartphone"
-        />
-        Smartphone
-      </label>
-      <label>
-        <input
-          type="radio"
-          onChange={handleChange}
-          checked={radio === 'Notebook'}
-          value="Notebook"
-        />
-        Notebook
-      </label>
-      <h2> Cores </h2>
-      <label>
-        <input
-          type="radio"
-          onChange={({ target }) => setColor(target.value)}
-          checked={color === 'Red'}
+          checked={color.includes('Red')}
           value="Red"
         />
         Red
       </label>
       <label>
         <input
-          type="radio"
-          onChange={({ target }) => setColor(target.value)}
-          checked={color === 'Green'}
+          type="checkbox"
+          onChange={handleChange}
+          checked={color.includes('Green')}
           value="Green"
         />
         Green
