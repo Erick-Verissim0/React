@@ -1,0 +1,13 @@
+.title,
+.value {
+  color: #42c;
+}
+
+.value {
+  font-weight: bold;
+}
+
+.buy {
+    background-color: rgb(94, 55, 248);
+    color: white;
+}
