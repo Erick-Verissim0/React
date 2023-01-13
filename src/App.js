@@ -1,12 +1,21 @@
 import React from 'react';
-import Product from './Components/Product';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Header';
+import About from './About';
+import Home from './Home';
+import errorNotFound from './errorNotFound';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Product />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<errorNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
