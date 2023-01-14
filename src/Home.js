@@ -2,8 +2,8 @@ import React from 'react'
 
 function Home() {
   return (
-    <div> <p> essa é a home </p> </div>
+    <div> <h2> essa é a home </h2> </div>
   )
-}
 
+}
 export default Home
